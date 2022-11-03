@@ -11,7 +11,7 @@
 ## Integrantes: 
 - <a href="https://www.linkedin.com/in/beny-frid-b70290254/">Beny Frid</a>
 - <a href="https://www.linkedin.com/in/felipe-gomes-526186232/">Felipe Gomes Rodrigues dos Santos</a> 
-- - <a href="https://www.linkedin.com/in/giovanna-furlan-torres-378316182/">Giovanna Furlan Torres</a>
+- <a href="https://www.linkedin.com/in/giovanna-furlan-torres-378316182/">Giovanna Furlan Torres</a>
 - <a href="https://www.linkedin.com/in/kil-matheus-gomes-teixeira-78257020a/">Kil Matheus Gomes Teixeira</a> 
 - <a href="https://www.linkedin.com/in/marcelofeitoza7/">Marcelo Gomes Feitoza</a>
 - <a href="https://www.linkedin.com/in/rodrigo-campos-8b70191ab/">Rodrigo Campos Rodrigues</a> 
