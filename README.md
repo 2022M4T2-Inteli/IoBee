@@ -25,7 +25,7 @@ Atualmente a Beacon School encontra dificuldades em conseguir gerir os equipamen
 
 |--> documentos<br>
   &emsp;| --> antigos<br>
-  &emsp;| --> outros<br>
+  &emsp;| --> apresentações<br>
   &emsp;| T2_G3_V1_DocIoT.pdf<br>
   &emsp;| T2_G3_V1_DocIoT.docx<br>
   &emsp;| T2_G3_V1_ManualDeInstrucoes.pdf<br>
@@ -33,8 +33,8 @@ Atualmente a Beacon School encontra dificuldades em conseguir gerir os equipamen
 |--> imagens<br>
 |--> src<br>
   &emsp;| --> backend<br>
-  &emsp;| --> circuito<br>
   &emsp;| --> frontend<br>
+  &emsp;| --> IDE Arduino<br>
 | readme.md<br>
 | license.txt
 
@@ -62,16 +62,38 @@ Dentre os arquivos presentes na raiz do projeto, definem-se:
 * 0.1.1 - 18/11/2022
     * Terceira entrega -
 * 0.1.0 - 04/11/2022
-    * Segunda entrega -
+    * Segunda entrega - Análise de custo, plataforma Web (Front-end), primeira versão do código com sensor RFID
 * 0.0.1 - 21/10/2022
     * Primeira entrega - Modelo de negócios e arquitetura da solução
 
 ## 📋 Licença/License
 
-<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/Spidus/Teste_Final_1">Turnover de funcionários</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.yggbrasil.com.br/vr">Inteli, Beny Frid, Felipe Gomes Rodrigues dos Santos, Giovanna Furlan Torres, Kil Matheus Gomes Teixeira, Marcelo Gomes Feitoza e Rodrigo Campos Rodrigues</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.</p>
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/Spidus/Teste_Final_1">Dispositivo IoT de localização de ativos</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.yggbrasil.com.br/vr">Inteli, Beny Frid, Felipe Gomes Rodrigues dos Santos, Giovanna Furlan Torres, Kil Matheus Gomes Teixeira, Marcelo Gomes Feitoza e Rodrigo Campos Rodrigues</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.</p>
 
 ## 🎓 Referências
 
 Aqui estão as referências usadas no projeto:
 
+- ANTERO, Kalyenne de Lima et al. Roteiro e storyboard. 1. ed. [S. l.]: Inter Saberes, 2021.
+214 p. v. 1. Acesso em: 15 out. 2022.
+
+- BANDEIRA, Rômulo Torres. O Diagrama de Soluções Digitais (DSD): e o planejamento de
+marketing digital da sua empresa. Linkedin, [S. l.], v. 1, n. 1, p. 1-1, 26 ago. 2019.
+Disponível em: https://www.linkedin.com/pulse/o-diagrama-de-soluções-digitais-dsd-eplanejamento-da-rômulo/?originalSubdomain=pt. Acesso em: 11 out. 2022.
+
+- BEACON School: Educação Internacional – Identidade brasileira. 1. [S. l.], 2022.
+Disponível em: https://www.beaconschool.com.br. Acesso em: 10 out. 2022.
+
+- BERNARDO, Paulo C.; KON, Fabio, A importância dos Testes Automatizados. Artigo
+Revista Engenharia de Software Magazine, página 54-57, 2008.
+
+- JINO, Mário; MALDONADO, José C.; DELAMARO, Márcio E. , Introdução ao Teste de
+Software. São Paulo: Campus Elsevier, 2007.
+
+- PACHÁ, Caio. Style guide: porque, quando, como e onde criar um. Brasil : UX Designer,
+[S. l.], v. 1, n. 1, p. 1-1, 28 jan. 2021. Disponível em: https://brasil.uxdesign.cc/style-guidepor-que-quando-como-e-onde-criar-um-f7b173006740. Acesso em: 12 out. 2022.
+
+- VENDRAMINI, Giovana Schnorr. User flow: o mapa do sucesso para o UX Design.
+Ateliware, [S. l.], p. 1-1, 1 jul. 2021. Disponível em: https://ateliware.com/blog/userflow#:~:text=O%20User%20Flow%2C%20ou%20Fluxo,as%20expectativas%20do%20seu
+%20cliente. Acesso em: 11 out. 2022.
 
