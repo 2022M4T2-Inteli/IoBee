@@ -14,7 +14,7 @@
 #define led_verde     5
 #define buzzer        40
 
-// Variável para controle de funcionamento do sistema
+// Variável para controle de funcionamento do Led Verde (Utilizada quando o sensor RFID de está lendo uma tag, quando conclui a leitura e na função de reset)
 int iniciar = 0;
 
 // Definição das propriedades utilizadas no leitor de RFID
@@ -24,7 +24,7 @@ MFRC522 rfidBase = MFRC522(RFID_SS_SDA, RFID_RST);
 const char* ssid = "SHARE-RESIDENTE";
 const char* password =  "Share@residente";
 
-// Quando o leitor RFID inicia a leitura de uma tag, cartão ou etiqueta
+// Objeto Sensor RFID, contendo todas as suas funções de utilização
 class LeitorRFID{
   private:
 
@@ -51,7 +51,7 @@ class LeitorRFID{
       Serial.println(codigoRFIDLido);
     }
   public:
-    // Valores de regulagem e escolha das portas no ESP32
+    // Valores de regulagem e escolha das portas do ESP32 S3 para a utilização do Sensor RFID
     LeitorRFID(MFRC522 *leitor){
       rfid = leitor;
       rfid->PCD_Init();
@@ -76,7 +76,7 @@ class LeitorRFID{
       if (rfid->PICC_IsNewCardPresent()) { // Nova tag, cartão ou etiqueta for habilitada 
         iniciar = 7;
         Serial.println("Cartao presente");
-        // Habilitação do led verde quando cartão for lido
+        // Habilitação do led verde piscando até que a leitura do cartão, tag ou etiqueta estiver concluída.
           while (iniciar != 0){
             digitalWrite(led_verde, HIGH);
             delay(80);
@@ -85,24 +85,25 @@ class LeitorRFID{
             iniciar -= 1;
           }
         cartaoDetectado = 1;
-        if (rfid->PICC_ReadCardSerial()) { // Quando cartão, tag ou etiqueta já for lido
+        if (rfid->PICC_ReadCardSerial()) { // Quando cartão, tag ou etiqueta já for lido.
           Serial.println("Cartao lido");
-          digitalWrite(led_verde, HIGH); // Led verde quando cartão, tag ou etiqueta já for lido ficar com luz contínua
+          digitalWrite(led_verde, HIGH); // Led verde quando cartão, tag ou etiqueta já for lido ficar com luz contínua.
           cartaoJaLido = 1;
           processaCodigoLido();
           rfid->PICC_HaltA(); 
           rfid->PCD_StopCrypto1(); 
-          tone(buzzer, 3000, 500);
+          tone(buzzer, 3000, 500); // Buzzer é acionado, indicando a conclusão da leitura do cartão, tag ou etiqueta.
           delay(1000);
         }
       }else{
+        // Reset das variáveis caso o cartão, tag ou etiqueta tenha sido retirado antes da conclusão da leitura.
         cartaoDetectado = 0;
         iniciar = 10;
-        digitalWrite(led_verde, LOW); // Apagar led verde
+        digitalWrite(led_verde, LOW);
       }
     };
     char *cartaoLido(){
-      // Conexão do ESP 32 S3 com o WIFI
+      // Conexão do ESP 32 S3 com o WIFI e uma requisão para enviar informações para um endereço.
           if ((WiFi.status() == WL_CONNECTED))
           {
           long rnd = random (1,10);
@@ -116,9 +117,9 @@ class LeitorRFID{
     void resetarLeitura(){
       cartaoDetectado = 0;
       cartaoJaLido = 0;
-      iniciar = 10;
+      iniciar = 7;
     }
-    // Passos para processamento de leitura
+    // Passos para processamento de leitura, onde será exibida no LCD 16x2
     void listI2CPorts(){
       Serial.println("\nI2C Scanner"); // Pronto para escaniar 
       byte error, address;
@@ -168,13 +169,13 @@ void setup() {
   pinMode(led_vermelho, OUTPUT);
   pinMode(led_verde, OUTPUT);
   pinMode(buzzer, OUTPUT);
-  // Led aceso para mostrar que o sistema está funcionando 
+  // Led aceso para mostrar que o sistema está energizado e em funcionamento
   digitalWrite(led_vermelho, HIGH);
 
   leitor = new LeitorRFID(&rfidBase);
 
 }
-// Exibir qual foi o cartão lido, sua identificação
+// No loop, será chamda todas as função quando requisitadas. Enquanto espera até que um cartão, tag ou etiqueta for encontrado, o programa vai mostrar "Lendo Cartão"
 void loop() {
   Serial.println("Lendo Cartao:");
   leitor->leCartao();
