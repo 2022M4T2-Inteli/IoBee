@@ -13,16 +13,21 @@
 #define led_vermelho  2
 #define led_verde     5
 #define buzzer        40
+#define I2C_SDA       47
+#define I2C_SCL       48
 
 // Variável para controle de funcionamento do Led Verde (Utilizada quando o sensor RFID de está lendo uma tag, quando conclui a leitura e na função de reset)
 int iniciar = 0;
+int lcdLinha =2;
+int lcdColuna = 16;
+LiquidCrystal_I2C lcd(0x27, lcdColuna, lcdLinha);  
 
 // Definição das propriedades utilizadas no leitor de RFID
 MFRC522 rfidBase = MFRC522(RFID_SS_SDA, RFID_RST);
 
 // Definição da rede e senha utilizada para conexão via WIFI com o ESP32 S3
-const char* ssid = "SHARE-RESIDENTE";
-const char* password =  "Share@residente";
+const char* ssid = "Inteli-COLLEGE";
+const char* password =  "QazWsx@123";
 
 // Objeto Sensor RFID, contendo todas as suas funções de utilização
 class LeitorRFID{
@@ -75,18 +80,25 @@ class LeitorRFID{
     void leCartao(){
       if (rfid->PICC_IsNewCardPresent()) { // Nova tag, cartão ou etiqueta for habilitada 
         iniciar = 7;
-        Serial.println("Cartao presente");
+        lcd.clear(); 
+        lcd.print("Lendo...");
+        // Serial.println("Cartao presente");
         // Habilitação do led verde piscando até que a leitura do cartão, tag ou etiqueta estiver concluída.
           while (iniciar != 0){
             digitalWrite(led_verde, HIGH);
-            delay(80);
+            delay(40);
             digitalWrite(led_verde, LOW);
             delay(80);
             iniciar -= 1;
           }
+          lcd.clear(); 
         cartaoDetectado = 1;
         if (rfid->PICC_ReadCardSerial()) { // Quando cartão, tag ou etiqueta já for lido.
-          Serial.println("Cartao lido");
+          lcd.clear(); 
+            lcd.print("Leitura Completa");
+            lcd.setCursor(0,1);
+            lcd.print(codigoRFIDLido);
+          // Serial.println("Cartao lido");
           digitalWrite(led_verde, HIGH); // Led verde quando cartão, tag ou etiqueta já for lido ficar com luz contínua.
           cartaoJaLido = 1;
           processaCodigoLido();
@@ -100,6 +112,7 @@ class LeitorRFID{
         cartaoDetectado = 0;
         iniciar = 10;
         digitalWrite(led_verde, LOW);
+        lcd.clear(); 
       }
     };
     char *cartaoLido(){
@@ -120,38 +133,38 @@ class LeitorRFID{
       iniciar = 7;
     }
     // Passos para processamento de leitura, onde será exibida no LCD 16x2
-    void listI2CPorts(){
-      Serial.println("\nI2C Scanner"); // Pronto para escaniar 
-      byte error, address;
-      int nDevices;
-      Serial.println("Scanning..."); // Escaniando 
-      nDevices = 0;
-      for(address = 1; address < 127; address++ ) {
-        Wire.beginTransmission(address);
-        error = Wire.endTransmission();
-        if (error == 0) {
-          Serial.print("I2C device found at address 0x"); // Leitura realizada
-          if (address<16) {
-            Serial.print("0");
-          }
-          Serial.println(address,HEX);
-          nDevices++;
-        }
-        else if (error==4) {
-          Serial.print("Unknow error at address 0x"); // Leitura com erro
-          if (address<16) {
-            Serial.print("0");
-          }
-          Serial.println(address,HEX);
-        }
-      }
-      if (nDevices == 0) {
-        Serial.println("No I2C devices found\n"); // Leitura não concluída
-      }
-      else {
-        Serial.println("done\n");
-      }
-    };
+    // void listI2CPorts(){
+    //   Serial.println("\nI2C Scanner"); // Pronto para escaniar 
+    //   byte error, address;
+    //   int nDevices;
+    //   Serial.println("Scanning..."); // Escaniando 
+    //   nDevices = 0;
+    //   for(address = 1; address < 127; address++ ) {
+    //     Wire.beginTransmission(address);
+    //     error = Wire.endTransmission();
+    //     if (error == 0) {
+    //       Serial.print("I2C device found at address 0x"); // Leitura realizada
+    //       if (address<16) {
+    //         Serial.print("0");
+    //       }
+    //       Serial.println(address,HEX);
+    //       nDevices++;
+    //     }
+    //     else if (error==4) {
+    //       Serial.print("Unknow error at address 0x"); // Leitura com erro
+    //       if (address<16) {
+    //         Serial.print("0");
+    //       }
+    //       Serial.println(address,HEX);
+    //     }
+    //   }
+    //   if (nDevices == 0) {
+    //     Serial.println("No I2C devices found\n"); // Leitura não concluída
+    //   }
+    //   else {
+    //     Serial.println("done\n");
+    //   }
+    // };
 };
 
 LeitorRFID *leitor = NULL;
@@ -172,12 +185,19 @@ void setup() {
   // Led aceso para mostrar que o sistema está energizado e em funcionamento
   digitalWrite(led_vermelho, HIGH);
 
+  //LCD
+  Wire.begin(I2C_SDA, I2C_SCL);
+  lcd.init();
+  lcd.backlight();
+
   leitor = new LeitorRFID(&rfidBase);
 
 }
 // No loop, será chamda todas as função quando requisitadas. Enquanto espera até que um cartão, tag ou etiqueta for encontrado, o programa vai mostrar "Lendo Cartão"
 void loop() {
-  Serial.println("Lendo Cartao:");
+  lcd.setCursor(0, 0);
+  lcd.print("Aproxime Cartao");
+  // Serial.println("Lendo Cartao:");
   leitor->leCartao();
   if(leitor->cartaoFoiLido()){
     Serial.println(leitor->tipoCartao());
