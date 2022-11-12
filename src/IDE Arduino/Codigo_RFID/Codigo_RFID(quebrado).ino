@@ -26,8 +26,10 @@ LiquidCrystal_I2C lcd(0x27, lcdColuna, lcdLinha);
 MFRC522 rfidBase = MFRC522(RFID_SS_SDA, RFID_RST);
 
 // Definição da rede e senha utilizada para conexão via WIFI com o ESP32 S3
-const char* ssid = "Inteli-COLLEGE";
-const char* password =  "QazWsx@123";
+// const char* ssid = "Inteli-COLLEGE";
+// const char* password =  "QazWsx@123";
+const char* ssid = "SHARE-RESIDENTE";
+const char* password = "Share@residente";
 
 // Objeto Sensor RFID, contendo todas as suas funções de utilização
 class LeitorRFID{
@@ -132,39 +134,6 @@ class LeitorRFID{
       cartaoJaLido = 0;
       iniciar = 7;
     }
-    // Passos para processamento de leitura, onde será exibida no LCD 16x2
-    // void listI2CPorts(){
-    //   Serial.println("\nI2C Scanner"); // Pronto para escaniar 
-    //   byte error, address;
-    //   int nDevices;
-    //   Serial.println("Scanning..."); // Escaniando 
-    //   nDevices = 0;
-    //   for(address = 1; address < 127; address++ ) {
-    //     Wire.beginTransmission(address);
-    //     error = Wire.endTransmission();
-    //     if (error == 0) {
-    //       Serial.print("I2C device found at address 0x"); // Leitura realizada
-    //       if (address<16) {
-    //         Serial.print("0");
-    //       }
-    //       Serial.println(address,HEX);
-    //       nDevices++;
-    //     }
-    //     else if (error==4) {
-    //       Serial.print("Unknow error at address 0x"); // Leitura com erro
-    //       if (address<16) {
-    //         Serial.print("0");
-    //       }
-    //       Serial.println(address,HEX);
-    //     }
-    //   }
-    //   if (nDevices == 0) {
-    //     Serial.println("No I2C devices found\n"); // Leitura não concluída
-    //   }
-    //   else {
-    //     Serial.println("done\n");
-    //   }
-    // };
 };
 
 LeitorRFID *leitor = NULL;
