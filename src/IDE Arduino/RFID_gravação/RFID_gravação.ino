@@ -16,6 +16,7 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);
 #define led_az_le     2
 #define led_ve_gr     5
 #define led_sis       4
+#define buzzer        37
  
 MFRC522::MIFARE_Key key;
  
@@ -26,6 +27,7 @@ void setup()
   pinMode(led_az_le, OUTPUT);
   pinMode(led_ve_gr, OUTPUT);
   pinMode(led_sis, OUTPUT);
+  pinMode(buzzer, OUTPUT);
  
   Serial.begin(9600);   //Inicia a serial
   SPI.begin();      //Inicia  SPI bus
@@ -36,13 +38,14 @@ void setup()
   Wire.begin(I2C_SDA, I2C_SCL);
   lcd.init();
   lcd.backlight();
-  mensageminicial();
+  lcd.print("Bem-Vindo");
 
   //Mostra visualmente a Energização do Sistema
   digitalWrite(led_az_le, HIGH);
   digitalWrite(led_ve_gr, HIGH);
   digitalWrite(led_sis, HIGH);
   delay(1000);
+  mensageminicial();
   digitalWrite(led_az_le, LOW);
   digitalWrite(led_ve_gr, LOW); 
  
