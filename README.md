@@ -60,7 +60,7 @@ Dentre os arquivos presentes na raiz do projeto, definem-se:
 * 0.2.0 - 02/12/2022
     * Quarta entrega - 
 * 0.1.1 - 18/11/2022
-    * Terceira entrega -
+    * Terceira entrega - Plataforma Web (Back-end), Protótipo de case, Manual de instruções, códigos de gravação, leitura e inicio da comunicação esp com esp
 * 0.1.0 - 04/11/2022
     * Segunda entrega - Análise de custo, plataforma Web (Front-end), primeira versão do código com sensor RFID
 * 0.0.1 - 21/10/2022
