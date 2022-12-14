@@ -30,11 +30,10 @@ Atualmente a Beacon School encontra dificuldades em conseguir gerir os equipamen
   &emsp;| T2_G3_V1_DocIoT.docx<br>
   &emsp;| T2_G3_V1_ManualDeInstrucoes.pdf<br>
   &emsp;| T2_G3_V1_ManualDeInstrucoes.docx<br>
-|--> imagens<br>
 |--> src<br>
-  &emsp;| --> backend<br>
   &emsp;| --> frontend<br>
   &emsp;| --> IDE Arduino<br>
+  &emsp;| --> Inventor - Protótipo da Case<br>
 | readme.md<br>
 | license.txt
 
@@ -44,19 +43,18 @@ Dentre os arquivos presentes na raiz do projeto, definem-se:
 
 - <b>documentos</b>: aqui estarão todos os documentos do projeto. Há também uma pasta denominada <b>outros</b> onde estão presentes aqueles documentos complementares ao <b>modelo preditivo</b>.
 
-- <b>imagens</b>: imagens relacionadas ao projeto como um todo (por exemplo imagens do sistema, do grupo, logotipos e afins).
-
 - src: nesta pasta encontra-se todo o código fonte do sistema (existem duas subpastas backend e frontend que contêm, respectivamente, o código do servidor e o código da página web).
 
 
-## 💻 Execução dos projetos
+## 💻 Execução do projeto
 
+Acesso da plataforma Web se dá pelo link : https://projeto3-client.vercel.app 
 
 
 ## 🗃 Histórico de lançamentos
 
 * 0.2.1 - 16/12/2022
-    * Quinta entrega -
+    * Quinta entrega - Entrega Final
 * 0.2.0 - 02/12/2022
     * Quarta entrega - Integração back-end e Front-end, localização de dispositivos esp com esp, case, viabilização financeira e melhorias futuras
 * 0.1.1 - 18/11/2022
